@@ -44,7 +44,7 @@ matrix:
 
 
     - os: linux-ppc64le
-      sudo: required
+      sudo: false
       dist: trusty
       cache: apt
       before_install:
@@ -53,7 +53,8 @@ matrix:
         - sudo apt-get install -qq libfuse-dev openjdk-7-jdk
         - sudo update-alternatives --set java /usr/lib/jvm/java-7-openjdk-ppc64el/jre/bin/java
         - sudo git clone --branch 1.61 https://github.com/danmar/cppcheck.git
-        - pwd
+        - uname -a
+        - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-ppc64el
         - cd ./cppcheck
         - sudo make
         - sudo make install
